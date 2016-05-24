@@ -12,8 +12,8 @@ namespace CarsConsole
         static void Main(string[] args)
         {
             Car carx = new Car();
-            carx.set_color("red");
-            Console.Out.WriteLine("The color is " + carx.get_color());
+            carx.Color = "red";
+            Console.Out.WriteLine("The color is " + carx.Color);
             Console.In.ReadLine();
         }
     }

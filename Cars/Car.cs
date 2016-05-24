@@ -9,13 +9,15 @@ namespace Cars
     public class Car
     {
         private string color;
-        public void set_color(string a)
+        /*public void set_color(string a)
         {
             color = a;
         }
         public string get_color()
         {
             return color;
-        }
+        }*/
+        //creating a property so we don't have get and sets.
+        public string Color { get { return color; } set { color = value; } }
     }
 }
