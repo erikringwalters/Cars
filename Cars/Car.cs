@@ -8,7 +8,7 @@ namespace Cars
 {
     public class Car
     {
-        private string color;
+        public string Color { get;set;}
         /*public void set_color(string a)
         {
             color = a;
@@ -18,6 +18,6 @@ namespace Cars
             return color;
         }*/
         //creating a property so we don't have get and sets.
-        public string Color { get { return color; } set { color = value; } }
+        //public string Color { get { return color; } set { color = value; } }
     }
 }
