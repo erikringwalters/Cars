@@ -9,6 +9,19 @@ namespace Cars
     public class Car
     {
         public string Color { get;set;}
+        private bool engineState;
+        public bool engineStatus()
+        {
+            return engineState;
+        }
+        public void TurnCarOn()
+        {
+            engineState = true;
+        }
+        public void TurnCarOff()
+        {
+            engineState = false;
+        }
         /*public void set_color(string a)
         {
             color = a;

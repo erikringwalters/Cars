@@ -1,9 +1,4 @@
-﻿using System;
-using Cars;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Cars;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CarsTester
@@ -17,6 +12,16 @@ namespace CarsTester
             Car testcar = new Car();
             testcar.Color = "blue";
             Assert.IsTrue(testcar.Color == "blue");
+        }
+        [TestMethod]
+        public void EngineTest()
+        {
+            Car testcar = new Car();
+            testcar.Color = "blue";
+            testcar.TurnCarOn();
+            Assert.IsTrue(testcar.engineStatus() == true);
+            testcar.TurnCarOff();
+            Assert.IsTrue(testcar.engineStatus() == false);
         }
     }
 }
