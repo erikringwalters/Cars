@@ -33,9 +33,9 @@ namespace CarsTester
         {
             Car onoroff = new Car();
             onoroff.TurnCarOn();
-            Assert.IsTrue(onoroff.GetStatus() == Status.EngineOn);
+            Assert.IsTrue(onoroff.GetReport().Status == Status.EngineOn);
             onoroff.TurnCarOff();
-            Assert.IsTrue(onoroff.GetStatus() == Status.EngineOff);
+            Assert.IsTrue(onoroff.GetReport().Status == Status.EngineOff);
         }
         [TestMethod]
         public void MovingTest()
@@ -43,9 +43,11 @@ namespace CarsTester
             Car moving = new Car();
             moving.TurnCarOn();
             moving.PressAccelerator();
-            Assert.IsTrue(moving.GetStatus() == Status.Moving);
+            Report r = moving.GetReport();
+            Assert.IsTrue(r.Status == Status.Moving);
             moving.PressBrake();
-            Assert.IsTrue(moving.GetStatus() == Status.Stopped);
+            r = moving.GetReport();
+            Assert.IsTrue(r.Status == Status.Stopped);
         }
         [TestMethod]
         public void AccellerateBeforeTurningOnEngineTest()
@@ -53,8 +55,25 @@ namespace CarsTester
             Car moving = new Car();
             //moving.TurnCarOn();
             moving.PressAccelerator();
-            Assert.IsTrue(moving.GetStatus() == Status.EngineOff);
-
+            Assert.IsTrue(moving.GetReport().Status == Status.EngineOff);
+        }
+        [TestMethod]
+        public void CheckSpeed()
+        {
+            Car speedCheck = new Car();
+            speedCheck.TurnCarOn();
+            speedCheck.PressAccelerator(60);
+            Assert.IsTrue(speedCheck.GetReport().Status == Status.Moving);
+            Assert.IsTrue(speedCheck.GetReport().CurrentSpeed == 60);
+        }
+        [TestMethod]
+        public void CheckOverSpeed()
+        {
+            Car speedCheck = new Car();
+            speedCheck.TurnCarOn();
+            speedCheck.PressAccelerator(120);
+            Assert.IsTrue(speedCheck.GetReport().Status == Status.Moving);
+            Assert.IsTrue(speedCheck.GetReport().CurrentSpeed == 100);
         }
     }
 }

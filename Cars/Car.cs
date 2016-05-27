@@ -14,12 +14,16 @@ namespace Cars
         Moving,
         Other
     }
+
     public class Car
     {
         private bool accelerator;
         private bool brake;
         public string Color { get;set;}
         private bool engineState;
+        private float currentSpeed;
+        private float cruisingSpeed = 20;
+        private float maximumSpeed = 100;
         public bool engineStatus()
         {
             return engineState;
@@ -32,31 +36,44 @@ namespace Cars
         {
             engineState = false;
         }
-        public void PressAccelerator()
-        {
-            accelerator = true;
-            brake = false;
-        }
+      
         public void PressBrake()
         {
             accelerator = false;
             brake = true;
         }
-        public Status GetStatus()
+        public void PressAccelerator()
         {
-            if(engineState == true)
+            PressAccelerator(cruisingSpeed);
+        }
+        public void PressAccelerator(float speed)
+        {
+            accelerator = true;
+            brake = false;
+            if (speed >= maximumSpeed)
+            {
+                currentSpeed = maximumSpeed;
+            }
+            else
+            {
+                currentSpeed = speed;
+            }
+        }
+        private Status GetStatus()
+        {
+            if (engineState == true)
             {
                 if (accelerator == true)
                 {
                     return Status.Moving;
                 }
-                if(brake == true)
+                if (brake == true)
                 {
                     return Status.Stopped;
                 }
-                    return Status.EngineOn;
+                return Status.EngineOn;
             }
-            else if(engineState == false)
+            else if (engineState == false)
             {
                 return Status.EngineOff;
             }
@@ -64,11 +81,15 @@ namespace Cars
             {
                 return Status.Other;
             }
-           
-          
         }
 
-
+        public Report GetReport()
+        {
+            Report report = new Report();
+            report.Status = this.GetStatus();
+            report.CurrentSpeed = this.currentSpeed;
+            return report;
+        }
        
         /*public bool Moving()
         {
