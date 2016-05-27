@@ -26,6 +26,35 @@ namespace CarsTester
             Assert.IsTrue(testcar2.engineStatus() == true);
             testcar.TurnCarOff();
             Assert.IsTrue(testcar.engineStatus() == false);
+
+        }
+        [TestMethod]
+        public void EngineOnOrOffTest()
+        {
+            Car onoroff = new Car();
+            onoroff.TurnCarOn();
+            Assert.IsTrue(onoroff.GetStatus() == "The engine is on");
+            onoroff.TurnCarOff();
+            Assert.IsTrue(onoroff.GetStatus() == "The engine is off");
+        }
+        [TestMethod]
+        public void MovingTest()
+        {
+            Car moving = new Car();
+            moving.TurnCarOn();
+            moving.PressAccelerator();
+            Assert.IsTrue(moving.GetStatus() == "The car is moving");
+            moving.PressBrake();
+            Assert.IsTrue(moving.GetStatus() == "The car is not moving");
+        }
+        [TestMethod]
+        public void AccellerateBeforeTurningOnEngineTest()
+        {
+            Car moving = new Car();
+            //moving.TurnCarOn();
+            moving.PressAccelerator();
+            Assert.IsTrue(moving.GetStatus() == "The engine is off");
+
         }
     }
 }
