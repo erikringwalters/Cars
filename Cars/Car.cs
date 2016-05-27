@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace Cars
 {
+    public enum Status
+    {
+        EngineOn,
+        EngineOff,
+        Stopped,
+        Moving,
+        Other
+    }
     public class Car
     {
         private bool accelerator;
@@ -34,27 +42,27 @@ namespace Cars
             accelerator = false;
             brake = true;
         }
-        public string GetStatus()
+        public Status GetStatus()
         {
             if(engineState == true)
             {
                 if (accelerator == true)
                 {
-                    return "The car is moving";
+                    return Status.Moving;
                 }
                 if(brake == true)
                 {
-                    return "The car is not moving";
+                    return Status.Stopped;
                 }
-                    return "The engine is on";
+                    return Status.EngineOn;
             }
             else if(engineState == false)
             {
-                return "The engine is off";
+                return Status.EngineOff;
             }
             else
             {
-                return "IDK What's up with the car. Probably haven't thought about this possibility.";
+                return Status.Other;
             }
            
           

@@ -33,9 +33,9 @@ namespace CarsTester
         {
             Car onoroff = new Car();
             onoroff.TurnCarOn();
-            Assert.IsTrue(onoroff.GetStatus() == "The engine is on");
+            Assert.IsTrue(onoroff.GetStatus() == Status.EngineOn);
             onoroff.TurnCarOff();
-            Assert.IsTrue(onoroff.GetStatus() == "The engine is off");
+            Assert.IsTrue(onoroff.GetStatus() == Status.EngineOff);
         }
         [TestMethod]
         public void MovingTest()
@@ -43,9 +43,9 @@ namespace CarsTester
             Car moving = new Car();
             moving.TurnCarOn();
             moving.PressAccelerator();
-            Assert.IsTrue(moving.GetStatus() == "The car is moving");
+            Assert.IsTrue(moving.GetStatus() == Status.Moving);
             moving.PressBrake();
-            Assert.IsTrue(moving.GetStatus() == "The car is not moving");
+            Assert.IsTrue(moving.GetStatus() == Status.Stopped);
         }
         [TestMethod]
         public void AccellerateBeforeTurningOnEngineTest()
@@ -53,7 +53,7 @@ namespace CarsTester
             Car moving = new Car();
             //moving.TurnCarOn();
             moving.PressAccelerator();
-            Assert.IsTrue(moving.GetStatus() == "The engine is off");
+            Assert.IsTrue(moving.GetStatus() == Status.EngineOff);
 
         }
     }
