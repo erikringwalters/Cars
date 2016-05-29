@@ -22,8 +22,8 @@ namespace Cars
         public string Color { get;set;}
         private bool engineState;
         private float currentSpeed;
-        private float cruisingSpeed = 20;
-        private float maximumSpeed = 100;
+        protected float cruisingSpeed = 20;
+        protected float maximumSpeed = 100;
         public bool engineStatus()
         {
             return engineState;
@@ -129,4 +129,6 @@ namespace Cars
         //creating a property so we don't have get and sets.
         //public string Color { get { return color; } set { color = value; } }
     }
+
+    
 }

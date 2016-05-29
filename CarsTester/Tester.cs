@@ -75,5 +75,16 @@ namespace CarsTester
             Assert.IsTrue(speedCheck.GetReport().Status == Status.Moving);
             Assert.IsTrue(speedCheck.GetReport().CurrentSpeed == 100);
         }
+        [TestMethod]
+        public void CheckSupercarSpeed()
+        {
+            Supercar superSpeedCheck = new Supercar();
+            superSpeedCheck.TurnCarOn();
+            superSpeedCheck.PressAccelerator(230);
+            Assert.IsTrue(superSpeedCheck.GetReport().Status == Status.Moving);
+            Assert.IsTrue(superSpeedCheck.GetReport().CurrentSpeed == 200);
+            superSpeedCheck.PressAccelerator();
+            Assert.IsTrue(superSpeedCheck.GetReport().CurrentSpeed == 30);
+        }
     }
 }
