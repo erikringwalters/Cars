@@ -28,11 +28,11 @@ namespace Cars
         {
             return engineState;
         }
-        public void TurnCarOn()
+        public void TurnOn()
         {
             engineState = true;
         }
-        public void TurnCarOff()
+        public void TurnOff()
         {
             engineState = false;
         }
@@ -90,7 +90,27 @@ namespace Cars
             report.CurrentSpeed = this.currentSpeed;
             return report;
         }
-       
+       public new string ToString()
+        {
+            string message = "The color is " + this.Color + ".\n";
+            var x = this.GetReport();
+            switch(x.Status)
+            {
+                case Status.EngineOff:
+                    message += "The engine is off.\n";
+                    break;
+                case Status.EngineOn:
+                    message += "The engine is on.\n";
+                    break;
+                case Status.Moving:
+                    message += "The car is moving at the speed of " + currentSpeed + " mph.\n";
+                    break;
+                case Status.Stopped:
+                    message += "The car is not moving at " + currentSpeed + "mph.\n";
+                    break;
+            }
+            return message;
+        }
         /*public bool Moving()
         {
             if(engineState == true && accelerator == true)
