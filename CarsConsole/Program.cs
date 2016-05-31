@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cars;
+using System.Collections;
 
 namespace CarsConsole
 {
@@ -11,7 +12,7 @@ namespace CarsConsole
     {
         static void Main(string[] args)
         {
-            Program.ListThem();
+            Program.StackThem();
             //Car carx = new Car();
             //carx.Color = "red";
             //Console.Out.WriteLine("The color is " + carx.Color);
@@ -41,6 +42,32 @@ namespace CarsConsole
             //Console.ReadLine();
             foreach (Car car in carList)
             {
+                Console.WriteLine(car.ToString());
+            }
+
+        }
+        public static void StackThem()
+        {
+            Stack<Car> carStack = new Stack<Car>();
+            Car carD = new Car();
+            carD.Color = "purple";
+            carD.TurnOn();
+            carD.PressAccelerator(200);
+            carStack.Push(carD);
+            Car carE = new Car();
+            carE.Color = "pink";
+            carE.TurnOn();
+            carE.PressAccelerator(50);
+            carStack.Push(carE);
+            Car carF = new Car();
+            carF.Color = "white";
+            carF.TurnOn();
+            carF.PressAccelerator();
+            carStack.Push(carF);
+            Console.WriteLine("Stack size is " + carStack.Count);
+            for(int ii = 0; ii < 3; ii++)
+            {
+                var car = carStack.Pop();
                 Console.WriteLine(car.ToString());
             }
         }

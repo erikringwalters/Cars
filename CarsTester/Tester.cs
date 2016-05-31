@@ -112,5 +112,10 @@ namespace CarsTester
             Console.WriteLine("list size is " + carList.Count);
             Trace.WriteLine("list size is " + carList.Count);
         }
+        [TestMethod]
+        public void StackThem();
+        
+            
+        
     }
 }
